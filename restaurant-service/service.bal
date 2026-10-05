@@ -64,3 +64,46 @@ service /restaurants on new http:Listener(servicePort) {
         return {status: "UP", 'service: "restaurant-service"};
     }
 }
+   // ---- Menu management ----
+
+    resource function post [string restaurantId]/menu(@http:Payload NewMenuItem item) returns MenuItem|http:InternalServerError {
+        string id = uuid:createType1AsString();
+        sql:ParameterizedQuery q = `INSERT INTO menu_items (id, restaurant_id, name, price, stock)
+            VALUES (${id}, ${restaurantId}, ${item.name}, ${item.price}, ${item.stock})`;
+        sql:ExecutionResult|sql:Error result = dbClient->execute(q);
+        if result is sql:Error {
+            return <http:InternalServerError>{body: {message: "could not add menu item"}};
+        }
+        return {id, restaurantId, name: item.name, price: item.price, stock: item.stock, available: true};
+    }
+
+    resource function get [string restaurantId]/menu() returns MenuItem[]|http:InternalServerError {
+        stream<MenuItem, sql:Error?> resultStream = dbClient->query(
+            `SELECT id, restaurant_id as restaurantId, name, price, stock, available
+             FROM menu_items WHERE restaurant_id = ${restaurantId}`);
+        MenuItem[]|error items = from MenuItem m in resultStream select m;
+        if items is error {
+            return <http:InternalServerError>{body: {message: "could not fetch menu"}};
+        }
+        return items;
+    }
+
+    // Kitchen staff update the preparation status of an order.
+    // Publishes a `kitchen.status.updated` Kafka event consumed by the Order Service.
+    resource function put [string restaurantId]/orders/[string orderId]/status(@http:Payload StatusUpdateRequest req)
+            returns http:Ok|http:BadRequest|http:InternalServerError {
+        if req.status != "PREPARING" && req.status != "READY" {
+            return <http:BadRequest>{body: {message: "status must be PREPARING or READY"}};
+        }
+        KitchenStatusUpdatedEvent event = {
+            orderId,
+            restaurantId,
+            status: req.status,
+            timestamp: time:utcToString(time:utcNow())
+        };
+        error? publishResult = publishKitchenStatusUpdated(event);
+        if publishResult is error {
+            return <http:InternalServerError>{body: {message: "could not publish kitchen status event"}};
+        }
+        return <http:Ok>{body: {message: "status update published", orderId, status: req.status}};
+    }
