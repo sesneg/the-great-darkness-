@@ -1,0 +1,23 @@
+USE admin_db;
+
+CREATE TABLE IF NOT EXISTS restaurant_stats (
+    restaurant_id VARCHAR(36) PRIMARY KEY,
+    total_orders INT NOT NULL DEFAULT 0,
+    total_revenue DECIMAL(12,2) NOT NULL DEFAULT 0,
+    cancelled_orders INT NOT NULL DEFAULT 0,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS driver_stats (
+    driver_id VARCHAR(36) PRIMARY KEY,
+    total_deliveries INT NOT NULL DEFAULT 0,
+    active_deliveries INT NOT NULL DEFAULT 0,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS event_log (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    topic VARCHAR(60) NOT NULL,
+    payload JSON NOT NULL,
+    received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

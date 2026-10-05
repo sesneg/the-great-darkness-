@@ -1,0 +1,89 @@
+{
+  "last_build_time": 1791216356912,
+  "last_update_time": 1791216356912,
+  "last_bal_toml_update_time": 1791186006338,
+  "distribution_version": "2201.13.5",
+  "last_modified_time": {
+    "order_service": 1791214958159
+  },
+  "last_build_options": {
+    "compilationOptions": {
+      "dumpBir": false,
+      "dumpGraph": false,
+      "dumpRawGraphs": false
+    }
+  },
+  "src_meta_info": [
+    {
+      "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\Ballerina.toml",
+      "hash": "10dd3e63c4e96eec9af499d5d20ee20aeb31d2491003ae56ac7bd5fd59f37ebd",
+      "size": 99,
+      "lastModifiedTime": 1791186006338
+    },
+    {
+      "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\db.bal",
+      "hash": "0f4d56e0ccfd0dbb476304023e11a6be4b18b2df880e9ab7fcffba73ce829d19",
+      "size": 474,
+      "lastModifiedTime": 1791186006344
+    },
+    {
+      "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\kafka_consumer.bal",
+      "hash": "79b08c4b5d668d5d6a1997c429d6697165605848b6e8bd0ccef3c0affd05b73a",
+      "size": 3165,
+      "lastModifiedTime": 1791214958159
+    },
+    {
+      "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\kafka_producer.bal",
+      "hash": "4d66ba8d41137dca7ad880250adf1e89bbf9932305bce1ab54e36a729fd24725",
+      "size": 994,
+      "lastModifiedTime": 1791186006361
+    },
+    {
+      "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\order_repository.bal",
+      "hash": "89ac09a38a13b701034b018409e286f051511f04dbbdb156841578fb12d33699",
+      "size": 2423,
+      "lastModifiedTime": 1791186006349
+    },
+    {
+      "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\service.bal",
+      "hash": "526ce6545c1d9b5ce9e1c260d5130239694417702ea904e23a993c5e80e0fe79",
+      "size": 5817,
+      "lastModifiedTime": 1791186006354
+    },
+    {
+      "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\types.bal",
+      "hash": "d598aada72e8c7a29a593a5fff61a9a0a4d3f60f2ca1fce0e1b40d8359bcdda1",
+      "size": 1887,
+      "lastModifiedTime": 1791186006305
+    }
+  ],
+  "target_exec_meta_info": {
+    "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\target\\backup\\bin\\order_service.jar",
+    "hash": "e74f5a8754d2ee2eacab2eba4cb5896fa21e08b672b808076146f3f9b242f70a",
+    "size": 91395320,
+    "lastModifiedTime": 1791216358767
+  },
+  "settings_meta_info": {
+    "file": "C:\\Users\\USER\\.ballerina\\Settings.toml",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0,
+    "lastModifiedTime": 1785479065656
+  },
+  "ballerina_toml_meta_info": {
+    "file": "C:\\Users\\USER\\Downloads\\food-delivery-platform\\food-delivery-platform\\order-service\\Ballerina.toml",
+    "hash": "10dd3e63c4e96eec9af499d5d20ee20aeb31d2491003ae56ac7bd5fd59f37ebd",
+    "size": 99,
+    "lastModifiedTime": 1791186006338
+  },
+  "imports": [
+    "ballerinax/mysql",
+    "ballerinax/mysql.driver",
+    "ballerina/lang.string",
+    "ballerinax/kafka",
+    "ballerina/http",
+    "ballerina/log",
+    "ballerina/sql",
+    "ballerina/time",
+    "ballerina/uuid"
+  ]
+}

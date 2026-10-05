@@ -1,0 +1,11 @@
+USE payment_db;
+
+CREATE TABLE IF NOT EXISTS payments (
+    id VARCHAR(36) PRIMARY KEY,
+    order_id VARCHAR(36) NOT NULL UNIQUE,
+    customer_id VARCHAR(36) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    method VARCHAR(30) NOT NULL DEFAULT 'MOBILE_MONEY',
+    status VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

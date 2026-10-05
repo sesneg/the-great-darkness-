@@ -1,0 +1,9 @@
+# Overridden at container runtime via docker-compose environment variables
+# (Ballerina auto-maps BAL_CONFIG_* / uses defaults below for local dev)
+dbHost = "mysql"
+dbPort = 3306
+dbUser = "fooddelivery"
+dbPassword = "fooddelivery_pw"
+dbName = "customer_db"
+kafkaBootstrap = "kafka:29092"
+servicePort = 8081
